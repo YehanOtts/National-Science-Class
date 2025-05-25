@@ -41,8 +41,9 @@
         }
     </style>
 </head>
-<body class="min-h-screen font-inter text-neutral flex flex-col bg-cover bg-center bg-no-repeat" style="background-image: url('https://pic1.imgdb.cn/item/6832a6d158cb8da5c80cc73f.png');
-background-color: #131313; ">
+<body class="min-h-screen font-inter text-neutral flex flex-col bg-cover bg-center bg-no-repeat" 
+      style="background-image: url('https://pic1.imgdb.cn/item/6832a6d158cb8da5c80cc73f.png');
+             background-color: #131313;">
     <div class="absolute inset-0 bg-black/50"></div>
     
     <main class="flex-grow flex items-center justify-center relative z-10 px-4">
@@ -61,29 +62,37 @@ background-color: #131313; ">
     </footer>
 
     <script>
-        // 按钮跳转功能
-        document.getElementById('mainButton').addEventListener('click', function() {
-            const buttonText = this.textContent.trim();
-             window.location.href = 'https://20232027guoke.wordpress.com/';
-            
-            // 模拟跳转效果
-            this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 正在启动果壳...';
-            
-            setTimeout(() => {
-                this.innerHTML = buttonText;
-            }, 1000);
-        });
-
-        // 自定义功能
+        // 确保 DOM 完全加载后执行
         document.addEventListener('DOMContentLoaded', function() {
-            // 示例：自定义标题和按钮文字
-            // document.querySelector('h1').textContent = '您的自定义标题';
-            // document.getElementById('mainButton').textContent = '自定义按钮文字';
-            
-            // 示例：自定义背景图片
-            // document.body.style.backgroundImage = "url('https://example.com/your-image.jpg')";
+            try {
+                // 获取按钮元素
+                const mainButton = document.getElementById('mainButton');
+                
+                // 检查元素是否存在
+                if (!mainButton) {
+                    throw new Error('未找到按钮元素 #mainButton');
+                }
+                
+                // 添加点击事件
+                mainButton.addEventListener('click', function() {
+                    const buttonText = this.textContent.trim();
+                    
+                    // 先更新按钮状态
+                    this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 正在启动果壳...';
+                    
+                    // 执行跳转
+                    window.location.href = 'https://20232027guoke.wordpress.com/';
+                    
+                    // 无需恢复按钮文本，因为页面已跳转
+                });
+                
+                console.log('按钮事件绑定成功');
+            } catch (error) {
+                console.error('初始化错误:', error);
+                // 可选：向用户显示错误信息
+                alert('页面加载失败: ' + error.message);
+            }
         });
     </script>
 </body>
 </html>
-    
