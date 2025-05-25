@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Science class</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#74A352',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        neutral: '#1F2937',
+                        'neutral-light': '#F3F4F6',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .btn-hover {
+                @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+            }
+            .btn-press {
+                @apply active:scale-95 transition-transform duration-200;
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen font-inter text-neutral flex flex-col bg-cover bg-center bg-no-repeat" style="background-image: url('https://pic1.imgdb.cn/item/6832a6d158cb8da5c80cc73f.png');
+background-color: #131313; ">
+    <div class="absolute inset-0 bg-black/50"></div>
+    
+    <main class="flex-grow flex items-center justify-center relative z-10 px-4">
+        <div class="text-center max-w-2xl mx-auto">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-bold text-white mb-8 leading-tight drop-shadow-lg">
+                果壳，启动！
+            </h1>
+            <button id="mainButton" class="bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-12 rounded-full text-lg md:text-xl btn-hover btn-press shadow-xl">
+                确定要启动果壳吗
+            </button>
+        </div>
+    </main>
+
+    <footer class="relative z-10 py-6 px-4 text-center text-white/70 text-sm">
+        <p>© 2025 国科数理实验班 | 保留所有权利</p>
+    </footer>
+
+    <script>
+        // 按钮跳转功能
+        document.getElementById('mainButton').addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            console.log(`跳转到: ${buttonText} 页面`);
+            
+            // 模拟跳转效果
+            this.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 正在启动果壳...';
+            
+            setTimeout(() => {
+                this.innerHTML = buttonText;
+            }, 1000);
+        });
+
+        // 自定义功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 示例：自定义标题和按钮文字
+            // document.querySelector('h1').textContent = '您的自定义标题';
+            // document.getElementById('mainButton').textContent = '自定义按钮文字';
+            
+            // 示例：自定义背景图片
+            // document.body.style.backgroundImage = "url('https://example.com/your-image.jpg')";
+        });
+    </script>
+</body>
+</html>
+    
